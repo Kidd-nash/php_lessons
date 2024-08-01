@@ -1,49 +1,64 @@
 <?php
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+   $pagetitle = 'this is a page title';
 
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
-}
 
-// Check if file already exists
-if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
-  $uploadOk = 0;
-}
+   $content = 'this is my content with no search';
 
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
+   $otherContent = 'this is alternate content';
 
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
 
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-  } else {
-    echo "Sorry, there was an error uploading your file.";
-  }
-}
+   $bodyClass = 'dark_mobde';
+
+
+   $searchString = $_GET['search'] ?? '';
+   //is_null($_GET['search']) ? '' : $_GET['search'];
+
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo $pagetitle ?></title>
+    </head>
+    <body class="<?php echo $bodyClass ?>" >
+
+        <?php
+            if (strlen($searchString) > 0) {
+                echo $otherContent;
+            } else {
+                echo $content;
+            }
+        ?>
+
+
+        <?php //echo $content ?>
+        <br />
+
+        search : <?php echo $searchString ?>
+    </body>
+</html>
+<h1>My First PHP Site</h1>
+<p>This HTML will get delivered as is</p>
+<?php echo "<p>But this code is interpreted by PHP and turned into HTML</p>";?>
+<?php echo "<ul><li>You can use any HTML tags,</li><li>like this list.</li></ul>";?>
+<footer>
+  <p>And this code is back in plain HTML</p>
+</footer>
+
+<?php
+echo nl2br(
+    "I love PHP!
+    This sentence is in the same echo as the \"I love PHP!\" but with the use of nl2br(),
+    inside the quotations and the string inside it you could do a line break
+    Display a sentence with \"quotations\" on words, using a backslash in order to inform a code that a special character is to be presented
+    In code each of the echo from 1-3 below hase \\n and it does not work
+    "); ?>
+<?php
+// Write your code below:
+  echo "1. a thing I have to do";
+  echo "\n2. another thing I have to do";
+  echo "\n3. Learn to have \"fun\"";
+  
+
+
+
