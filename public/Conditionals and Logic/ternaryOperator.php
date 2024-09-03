@@ -1,5 +1,4 @@
 <?php
-namespace Codecademy;
 
 function ternaryCheckout($items)
 {

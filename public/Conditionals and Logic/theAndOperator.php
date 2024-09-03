@@ -1,17 +1,13 @@
 <?php
 
-function willWeEat($meal_type, $is_hungry){
-  if ($meal_type === "dessert" || $is_hungry){
-    return "Yum. Thanks!";
+function clapYourHands($is_happy, $knows_it){
+  if ($is_happy && $knows_it){
+    return "CLAP!";
   } else {
-    return "No thanks. We're not hungry.";
+    return ":(";
   }
 }
 
-
-
-echo willWeEat("dessert", false);
+echo clapYourHands(TRUE, TRUE);
 echo "\n\n";
-echo willWeEat("dinner", false);
-echo "\n\n";
-echo willWeEat("dinner", true);
+echo clapYourHands(TRUE, FALSE); 
