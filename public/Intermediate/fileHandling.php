@@ -26,3 +26,12 @@ fwrite($bands_file, "Still Woozy");
 //check out the file then close...
 fclose($bands_file);
 
+//open file in append mode
+$pets_file = fopen("cool-pets.txt", "a");
+//add favorite pet name to the file
+fwrite($pets_file, "Funcho"); // varies
+//check out the file then close...
+fclose($pets_file);
+
+
+
