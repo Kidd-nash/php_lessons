@@ -14,6 +14,16 @@ $db = new PDO($dsn, $username, $password);
 // Terminate db connection
 $db = null;
 
+// Fill in the $dsn here
+$dsn = "pgsql:host=$hostname;dbname=$dbname";
+
+// Add a try/catch block around this statement
+try {
+   $db = new PDO($dsn, $username, $password);
+} catch (Exception $e) {
+  echo $e->getMessage();
+}
+
 // Create a query to get the id, title, and author, and assign it to $booksQuery
 $bookQuery = $db()->query('SELECT id, title, author FROM books');
 
