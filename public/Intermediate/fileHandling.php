@@ -33,5 +33,17 @@ fwrite($pets_file, "Funcho"); // varies
 //check out the file then close...
 fclose($pets_file);
 
+// Long version of reading a text and appending contents
+// $read_file = fopen("read-me.txt", "r");
+// $read_size = filesize("read-me.txt");
+// $read_text = fread($read_file, $read_size);
+// fclose($read_file);
 
+// $append_file = fopen("append-me.txt", "a");
+// fwrite($append_file, "I love PHP!");
+// fclose($append_file);
 
+//Shorthand Functions for reading and appending
+$read_text = file_get_contents("read-me.txt");
+
+file_put_contents("append-me.txt", "I love PHP!", FILE_APPEND);
